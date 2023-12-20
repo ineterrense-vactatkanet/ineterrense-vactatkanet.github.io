@@ -1,6 +1,6 @@
 inet
   <footer>
-    <p>Contactez-nous :ineterrense-vactatkanet.github.io/</p>
+    <p>Contactez-nous :ineterrense-vactatkanet.github.io</p>
     <ul>
      <li><a href="index.html">Accueil</a></li>
     <li><a href="approssito.html">À propos</a></li>
