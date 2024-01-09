@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>anonyma</title>
+    <style>
+        /* Votre CSS ici */
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 999;
+        }
+
+        nav a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            display: block;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 90px 20px 60px 20px;
+        }
+
+        #previous-articles {
+            width: 100%;
+            display: none; /* Caché par défaut, visible lorsque le bouton est cliqué */
+        }
+
+        .blog-post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #show-previous-btn {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+ #anonymous-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-right: 5px;
+        }
+
+
+    <!-- Autres balises head... -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-od6kPXzF9ZZ7w1QxP4XsUgZb9jXjVVNwyHi+RW2TRbcuJ8+dJtsiUVsNVeKexDxvDEi5OIt2/M9WOaGQ7U1C5Q==" crossorigin="anonymous" />
+    </style>
+</head>
+<body>
+    <h1>Anonyma 📵</h1>
+
+    <!-- Formulaire de publication -->
+   <form id="article-form">
+    <i id="anonymous-icon" class="fas fa-hat-cowboy"></i>
+    <label for="article-title">Titre:</label>
+    <input type="text" id="article-title" required>
+    <label for="article-content">Article:</label>
+    <textarea id="article-content" required></textarea>
+    <button type="button" onclick="publishArticle()">Publier</button>
+</form>
+
+
+<button onclick="window.location.href='joker.html'">Read More</button>
+    <!-- Section pour afficher les publications -->
+    <section id="articles"></section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const articleForm = document.getElementById('article-form');
+            const articlesSection = document.getElementById('articles');
+
+            // Écouteur d'événement pour soumettre le formulaire
+            articleForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const title = document.getElementById('article-title').value;
+                const content = document.getElementById('article-content').value;
+
+                // Création d'un objet représentant l'article
+                const article = {
+                    title: title,
+                    content: content,
+                    user: 'user' + Math.random().toString(36).substring(7),
+                    timestamp: new Date().toLocaleString()  // Utilisation de la date pour une meilleure lisibilité
+                };
+
+                // Récupération des publications existantes ou initialisation d'un tableau vide
+                let articles = JSON.parse(localStorage.getItem('articles')) || [];
+
+                // Ajout du nouvel article à la liste
+                articles.unshift(article);
+
+                // Stockage des publications dans le localStorage
+                localStorage.setItem('articles', JSON.stringify(articles));
+
+                // Mise à jour de l'affichage des publications
+                displayArticles();
+            });
+
+            // Fonction pour afficher les publications
+            function displayArticles() {
+                articlesSection.innerHTML = ''; // Effacement du contenu actuel
+
+                // Récupération des publications depuis le localStorage
+                let articles = JSON.parse(localStorage.getItem('articles')) || [];
+
+                // Affichage des publications
+                articles.forEach(article => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.innerHTML = <strong>${article.user}</strong><br><em>${article.title}</em><br>${article.content}<br><small>${article.timestamp}</small>;
+                    articlesSection.appendChild(articleDiv);
+                });
+            }
+
+            // Afficher les publications au chargement de la page
+            displayArticles();
+        });
+    </script>
+</body>
+</html>
