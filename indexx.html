@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles Publiés</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-icon {
+            cursor: pointer;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 999;
+        }
+
+        nav a {
+            padding: 15px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+            display: block;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 90px 20px 60px 20px;
+        }
+
+        #previous-articles {
+            width: 100%;
+            display: none; /* Caché par défaut, visible lorsque le bouton est cliqué */
+        }
+
+        .blog-post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 15px;
+            width: 300px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .blog-post img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #show-previous-btn {
+            margin-top: 20px;
+            padding: 10px;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+
+  <meta name="humix-site-verification" content="c8vB7HQaG5aq0t3zC2Qa3rSxpcPB2k" />
+</head>
+
+
+
+
+
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="menu-icon">&#9776;</div>
+        </div>
+        <div class="logo">Ma Boutique</div>
+        <nav>
+            <a href="anonyme.html">Anonyme Page</a>
+
+<a href="publication.html">Another Page</a>
+            <a href="#">À Propos</a>
+            <a href="#">Service</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+       
+<p>Cette plateforme vous permet de faire des publications anonymes qui seront stockées.</p>
+
+        <form id="article-form">
+            <label for="article-title">Titre de l'article:</label>
+            <input type="text" id="article-title" required>
+
+            <label for="article-content">Contenu de l'article:</label>
+            <textarea id="article-content" required></textarea>
+
+            <button type="submit">Publier l'article</button>
+        </form>
+    </main>
+
+    <button id="show-previous-btn">Afficher les anciennes publications</button>
+
+
+
+ <section id="current-articles">
+            <!-- Les articles actuels seront ajoutés dynamiquement ici via JavaScript -->
+        </section>
+
+        <section id="previous-articles">
+            <!-- Les anciens articles seront ajoutés dynamiquement ici via JavaScript -->
+        </section>
+
+
+
+
+    <footer>
+        &copy; 2024 Ma Boutique en Ligne. Tous droits réservés.
+    </footer>
+
+
+
+
+
+<div id="humix-vid-auto-video-match" props="autoplay=1" style="width:560px;height:315px" float><script async src="https://www.humix.com/video.js"></script></div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuIcon = document.querySelector('.menu-icon');
+        const nav = document.querySelector('nav');
+        const currentArticlesSection = document.getElementById('current-articles');
+        const previousArticlesSection = document.getElementById('previous-articles');
+        const showPreviousBtn = document.getElementById('show-previous-btn');
+
+        menuIcon.addEventListener('click', function () {
+            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
+        });
+
+        // Logique pour afficher les pages sous les 3 barres
+        const pages = document.querySelectorAll('nav a');
+        pages.forEach(page => {
+            page.addEventListener('click', function () {
+                // Ajoutez la logique pour rediriger ou afficher la page correspondante
+                // Par exemple, vous pouvez utiliser window.location.href pour la redirection
+            });
+        });
+
+        document.getElementById('article-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById('article-title').value;
+            const content = document.getElementById('article-content').value;
+
+            const article = {
+                title: title,
+                content: content,
+                user: 'user' + Math.random().toString(36).substring(7),
+                timestamp: new Date().getTime()
+            };
+
+            // Logique pour sauvegarder l'article dans localStorage
+            let previousArticles = JSON.parse(localStorage.getItem('previousArticles')) || [];
+            previousArticles.push(article);
+            localStorage.setItem('previousArticles', JSON.stringify(previousArticles));
+
+            // Logique pour afficher l'article actuel
+            const articleElement = createArticleElement(article);
+            currentArticlesSection.appendChild(articleElement);
+
+            // Effacez le contenu du formulaire après la publication
+            document.getElementById('article-title').value = '';
+            document.getElementById('article-content').value = '';
+        });
+
+        // Logique pour afficher les articles actuels depuis localStorage
+        let currentArticles = []; // Remplacez ceci par la vraie logique pour récupérer les articles actuels
+        currentArticles.forEach(article => {
+            const articleElement = createArticleElement(article);
+            currentArticlesSection.appendChild(articleElement);
+        });
+
+        // Logique pour afficher les anciennes publications
+        showPreviousBtn.addEventListener('click', function () {
+            // Ajoutez ici la logique pour afficher les anciennes publications
+            let previousArticles = JSON.parse(localStorage.getItem('previousArticles')) || [];
+            previousArticles.forEach(article => {
+                const articleElement = createArticleElement(article);
+                previousArticlesSection.appendChild(articleElement);
+            });
+
+            // Affichez la section des anciennes publications
+            previousArticlesSection.style.display = 'block';
+        });
+
+        // Fonction pour créer un élément d'article HTML
+        function createArticleElement(article) {
+            const articleDiv = document.createElement('div');
+            articleDiv.classList.add('blog-post');
+
+            const titleElement = document.createElement('h3');
+            titleElement.textContent = article.title;
+
+            const userElement = document.createElement('p');
+            userElement.textContent = 'Auteur: ' + article.user;
+
+            const contentElement = document.createElement('p');
+            contentElement.textContent = article.content;
+
+            articleDiv.appendChild(titleElement);
+            articleDiv.appendChild(userElement);
+            articleDiv.appendChild(contentElement);
+
+            return articleDiv;
+        }
+    });
+</script>
+
+ 
+</body>
+</html>
