@@ -3,110 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlogaFox</title>
-    <style>
+    <title>Articles Publiés</title>
+      <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .menu-icon {
-            cursor: pointer;
-        }
-
-         .logo {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0 auto; /* Ajout de cette ligne pour centrer le texte */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
 }
 
-        nav {
-            display: none;
-            position: fixed;
-            top: 50px;
-            left: 0;
-            width: 100%;
-            background-color: #333;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            z-index: 999;
-        }
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
 
-        nav a {
-            padding: 20px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-            display: block;
-        }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        main {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 90px 20px 60px 20px;
-        }
+.menu-icon {
+    cursor: pointer;
+}
 
-        .blog-post {
-            border: 10px solid #ddd;
-            padding: 400px;
-            margin: 100px;
-            width: 300px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    width: 50px; /* Largeur du petit carré */
+    height: 50px; /* Hauteur du petit carré */
+    line-height: 50px; /* Centrer le texte verticalement */
+    text-align: center; /* Centrer le texte horizontalement */
+    cursor: pointer;
+    margin: 0 auto; /* Ajoutez cette propriété pour centrer le bloc 'logo' dans l'en-tête */
+}
 
-        .blog-post img {
-            max-width: 100%;
-            height: auto;
-        }
 
-        #show-previous-btn {
-            margin-top: 10px;
-            padding: 10px;
-            cursor: pointer;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-        }
 
-        #previous-articles {
-            width: 100%;
-            display: none;
-        }
+nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px; /* Largeur du petit carré */
+    height: 300px; /* Hauteur du petit carré */
+    background-color: #333;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 999;
+}
 
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 5px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+nav a {
+    padding: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    display: block;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 90px 20px 60px 20px;
+}
+
+#previous-articles {
+    width: 100%;
+    display: none;
+}
+
+#article-form {
+    width: 100%; /* Agrandir l'espace pour écrire les articles */
+    max-width: 800px; /* Limitez la largeur pour un meilleur affichage sur de grands écrans */
+    margin: 0 auto; /* Centrez le formulaire horizontalement */
+}
+
+#article-content {
+    height: 200px; /* Ajustez la hauteur de la zone de texte selon vos préférences */
+}
+
+.blog-post {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px;
+    width: 100%; /* Ajustez la largeur comme souhaité */
+    max-width: 300px; /* Limitez la largeur maximale pour une meilleure lisibilité */
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post img {
+    max-width: 100%;
+    height: auto;
+}
+
+#show-previous-btn {
+    margin-top: 20px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
     </style>
-
-    <meta name="humix-site-verification" content="c8vB7HQaG5aq0t3zC2Qa3rSxpcPB2k" />
 </head>
-
-    
 <body>
     <header>
         <div class="navbar">
@@ -115,9 +133,8 @@
         <div class="logo">BlogaFox</div>
         <nav>
             <a href="anonyme.html">Anonyme Page</a>
-            <a href="sites.html">Another Page</a>
-            <a href="approssito.html">À Propos</a>
-            <a href="Buy.html">Buy To Vinted</a>
+            <a href="publication.html">Another Page</a>
+            <a href="#">À Propos</a>
             <a href="#">Service</a>
             <a href="#">Contact</a>
         </nav>
@@ -125,27 +142,30 @@
 
     <main>
         <p>Cette plateforme vous permet de faire des publications anonymes qui seront stockées.</p>
+
         <form id="article-form">
             <label for="article-title">Titre de l'article:</label>
-            <input type="text" id="article-title" required>      
-<label for="article-content">Contenu de l'article:</label>
-<textarea id="article-content" required></textarea>
+            <input type="text" id="article-title" required>
+
+            <label for="article-content">Contenu de l'article:</label>
+            <textarea id="article-content" required></textarea>
+
             <button type="submit">Publier l'article</button>
         </form>
-
-      
+    </main>
 
     <button id="show-previous-btn">Afficher les anciennes publications</button>
-    
 
-    <div id="humix-vid-auto-video-match" props="autoplay=1" style="width:560px;height:315px" float><script async src="https://www.humix.com/video.js"></script></div>
+    <section id="current-articles">
+        <!-- Les articles actuels seront ajoutés dynamiquement ici via JavaScript -->
+    </section>
 
+    <section id="previous-articles">
+        <!-- Les anciens articles seront ajoutés dynamiquement ici via JavaScript -->
+    </section>
 
-      <section id="current-articles"></section>
-        <section id="previous-articles"></section>
-    </main>
     <footer>
-        &copy; 2024 BlogaFox. Tous droits réservés.
+        &copy; 2024 Ma Boutique en Ligne. Tous droits réservés.
     </footer>
 
     <script>
@@ -160,9 +180,11 @@
                 nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
             });
 
+            // Logique pour afficher les pages sous les 3 barres
             const pages = document.querySelectorAll('nav a');
             pages.forEach(page => {
-                page.addEventListener('click', function () {
+                page.addEventListener('click', function ()
+ {
                     // Ajoutez la logique pour rediriger ou afficher la page correspondante
                     // Par exemple, vous pouvez utiliser window.location.href pour la redirection
                 });
@@ -181,55 +203,61 @@
                     timestamp: new Date().getTime()
                 };
 
+                // Logique pour sauvegarder l'article dans localStorage
                 let previousArticles = JSON.parse(localStorage.getItem('previousArticles')) || [];
                 previousArticles.push(article);
                 localStorage.setItem('previousArticles', JSON.stringify(previousArticles));
 
+                // Logique pour afficher l'article actuel
                 const articleElement = createArticleElement(article);
                 currentArticlesSection.appendChild(articleElement);
 
+                // Effacez le contenu du formulaire après la publication
                 document.getElementById('article-title').value = '';
                 document.getElementById('article-content').value = '';
             });
 
+            // Logique pour afficher les articles actuels depuis localStorage
             let currentArticles = []; // Remplacez ceci par la vraie logique pour récupérer les articles actuels
             currentArticles.forEach(article => {
                 const articleElement = createArticleElement(article);
-                currentArticlesSection
-.appendChild(articleElement);
-});
-
-        showPreviousBtn.addEventListener('click', function () {
-            let previousArticles = JSON.parse(localStorage.getItem('previousArticles')) || [];
-            previousArticles.forEach(article => {
-                const articleElement = createArticleElement(article);
-                previousArticlesSection.appendChild(articleElement);
+                currentArticlesSection.appendChild(articleElement);
             });
 
-            previousArticlesSection.style.display = 'block';
+            // Logique pour afficher les anciennes publications
+            showPreviousBtn.addEventListener('click', function () {
+                // Ajoutez ici la logique pour afficher les anciennes publications
+                let previousArticles = JSON.parse(localStorage.getItem('previousArticles')) || [];
+                previousArticles.forEach(article => {
+                    const articleElement = createArticleElement(article);
+                    previousArticlesSection.appendChild(articleElement);
+                });
+
+                // Affichez la section des anciennes publications
+                previousArticlesSection.style.display = 'block';
+            });
+
+            // Fonction pour créer un élément d'article HTML
+            function createArticleElement(article) {
+                const articleDiv = document.createElement('div');
+                articleDiv.classList.add('blog-post');
+
+                const titleElement = document.createElement('h3');
+                titleElement.textContent = article.title;
+
+                const userElement = document.createElement('p');
+                userElement.textContent = 'Auteur: ' + article.user;
+
+                const contentElement = document.createElement('p');
+                contentElement.textContent = article.content;
+
+                articleDiv.appendChild(titleElement);
+                articleDiv.appendChild(userElement);
+                articleDiv.appendChild(contentElement);
+
+                return articleDiv;
+            }
         });
-
-        function createArticleElement(article) {
-            const articleDiv = document.createElement('div');
-            articleDiv.classList.add('blog-post');
-
-            const titleElement = document.createElement('h3');
-            titleElement.textContent = article.title;
-
-            const userElement = document.createElement('p');
-            userElement.textContent = 'Auteur: ' + article.user;
-
-            const contentElement = document.createElement('p');
-            contentElement.textContent = article.content;
-
-            articleDiv.appendChild(titleElement);
-            articleDiv.appendChild(userElement);
-            articleDiv.appendChild(contentElement);
-
-            return articleDiv;
-        }
-    });
-</script>
-
+    </script>
 </body>
 </html>
